@@ -15,20 +15,22 @@ public class Bicicleta {
     private UUID id;
     private String modelo;
     private String descricao;
-    private Double preco;
-    private LocalDate dataDeCompra;
-    private String nomeDoComprador;
+    private Double precoPago;
+    private LocalDate dataCompra;
+    private String nomeComprador;
+    private String nomeLoja;
 
     public Bicicleta() {
     }
 
-    public Bicicleta(UUID id, String modelo, String descricao, Double preco, LocalDate dataDeCompra, String nomeDoComprador) {
+    public Bicicleta(UUID id, String modelo, String descricao, Double precoPago, LocalDate dataCompra, String nomeComprador, String nomeLoja) {
         this.id = id;
         this.modelo = modelo;
         this.descricao = descricao;
-        this.preco = preco;
-        this.dataDeCompra = dataDeCompra;
-        this.nomeDoComprador = nomeDoComprador;
+        this.precoPago = precoPago;
+        this.dataCompra = dataCompra;
+        this.nomeComprador = nomeComprador;
+        this.nomeLoja = nomeLoja;
     }
 
     public UUID getId() {
@@ -55,28 +57,36 @@ public class Bicicleta {
         this.descricao = descricao;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Double getPrecoPago() {
+        return precoPago;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setPrecoPago(Double precoPago) {
+        this.precoPago = precoPago;
     }
 
-    public LocalDate getDataDeCompra() {
-        return dataDeCompra;
+    public LocalDate getDataCompra() {
+        return dataCompra;
     }
 
-    public void setDataDeCompra(LocalDate dataDeCompra) {
-        this.dataDeCompra = dataDeCompra;
+    public void setDataCompra(LocalDate dataCompra) {
+        this.dataCompra = dataCompra;
     }
 
-    public String getNomeDoComprador() {
-        return nomeDoComprador;
+    public String getNomeComprador() {
+        return nomeComprador;
     }
 
-    public void setNomeDoComprador(String nomeDoComprador) {
-        this.nomeDoComprador = nomeDoComprador;
+    public void setNomeComprador(String nomeComprador) {
+        this.nomeComprador = nomeComprador;
+    }
+
+    public String getNomeLoja(){
+        return nomeLoja;
+    }
+
+    public void setNomeLoja(String nomeLoja) {
+        this.nomeLoja = nomeLoja;
     }
 
     @Override
@@ -84,12 +94,12 @@ public class Bicicleta {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bicicleta bicicleta = (Bicicleta) o;
-        return Objects.equals(id, bicicleta.id) && Objects.equals(modelo, bicicleta.modelo) && Objects.equals(preco, bicicleta.preco) && Objects.equals(nomeDoComprador, bicicleta.nomeDoComprador);
+        return Objects.equals(id, bicicleta.id) && Objects.equals(modelo, bicicleta.modelo) && Objects.equals(descricao, bicicleta.descricao);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, modelo, preco, nomeDoComprador);
+        return Objects.hash(id, modelo, descricao);
     }
 
     @Override
@@ -98,9 +108,9 @@ public class Bicicleta {
                 "id=" + id +
                 ", modelo='" + modelo + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", preco=" + preco +
-                ", dataDeCompra=" + dataDeCompra +
-                ", nomeDoComprador='" + nomeDoComprador + '\'' +
+                ", preco=" + precoPago +
+                ", dataDeCompra=" + dataCompra +
+                ", nomeDoComprador='" + nomeComprador + '\'' +
                 '}';
     }
 }
