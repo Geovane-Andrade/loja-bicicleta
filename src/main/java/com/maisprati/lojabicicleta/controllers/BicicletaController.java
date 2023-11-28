@@ -1,6 +1,7 @@
 package com.maisprati.lojabicicleta.controllers;
 
 import com.maisprati.lojabicicleta.domain.models.Bicicleta;
+import com.maisprati.lojabicicleta.requests.BicicletaPatchRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPostRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPutRequestBody;
 import com.maisprati.lojabicicleta.service.BicicletaService;
@@ -40,7 +41,7 @@ public class BicicletaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarBicicleta(@PathVariable UUID id) {
         bicicletaService.delete(id);
-        return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping
@@ -48,11 +49,12 @@ public class BicicletaController {
         bicicletaService.replace(bicicletaPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<Bicicleta> atualizarNomeBicicleta(@PathVariable UUID id,
-//                                                            @RequestBody Bicicleta bicicleta) throws Exception {
-//        bicicletaService.update(bicicleta);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Bicicleta> atualizarNomeBicicleta(@PathVariable UUID id,
+                                                            @RequestBody BicicletaPatchRequestBody bicicletaPatchRequestBody) throws Exception {
+        bicicletaService.update(id, bicicletaPatchRequestBody);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 }
