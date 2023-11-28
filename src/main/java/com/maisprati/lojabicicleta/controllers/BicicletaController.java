@@ -51,8 +51,8 @@ public class BicicletaController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Bicicleta> atualizarNomeBicicleta(@PathVariable UUID id,
-                                                            @RequestBody BicicletaPatchRequestBody bicicletaPatchRequestBody) throws Exception {
+    public ResponseEntity<Bicicleta> atualizarParcialmenteBicicleta(@PathVariable UUID id,
+                                                                    @RequestBody BicicletaPatchRequestBody bicicletaPatchRequestBody) throws Exception {
         bicicletaService.update(id, bicicletaPatchRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
