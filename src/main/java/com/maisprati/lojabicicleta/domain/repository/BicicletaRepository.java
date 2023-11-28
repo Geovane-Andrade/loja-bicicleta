@@ -1,6 +1,6 @@
-package com.maisprati.lojabicicleta.domain.repositories;
+package com.maisprati.lojabicicleta.domain.repository;
 
-import com.maisprati.lojabicicleta.domain.models.Bicicleta;
+import com.maisprati.lojabicicleta.domain.model.Bicicleta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

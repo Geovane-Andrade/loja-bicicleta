@@ -1,6 +1,6 @@
-package com.maisprati.lojabicicleta.controllers;
+package com.maisprati.lojabicicleta.controller;
 
-import com.maisprati.lojabicicleta.domain.models.Bicicleta;
+import com.maisprati.lojabicicleta.domain.model.Bicicleta;
 import com.maisprati.lojabicicleta.requests.BicicletaPatchRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPostRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPutRequestBody;

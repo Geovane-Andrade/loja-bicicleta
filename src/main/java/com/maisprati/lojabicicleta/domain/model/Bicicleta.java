@@ -1,4 +1,4 @@
-package com.maisprati.lojabicicleta.domain.models;
+package com.maisprati.lojabicicleta.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

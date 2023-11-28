@@ -1,14 +1,14 @@
 package com.maisprati.lojabicicleta.service;
 
-import com.maisprati.lojabicicleta.domain.models.Bicicleta;
-import com.maisprati.lojabicicleta.domain.repositories.BicicletaRepository;
-import com.maisprati.lojabicicleta.mapper.BicicletaMapper;
+import com.maisprati.lojabicicleta.domain.model.Bicicleta;
+import com.maisprati.lojabicicleta.domain.repository.BicicletaRepository;
+import com.maisprati.lojabicicleta.exception.BadRequestException;
+import com.maisprati.lojabicicleta.mappers.BicicletaMapper;
 import com.maisprati.lojabicicleta.requests.BicicletaPatchRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPostRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPutRequestBody;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,9 +26,10 @@ public class BicicletaService {
 
     public Bicicleta findByIdOrThrowBadRequestException(UUID id) {
         return bicicletaRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bicicleta não existe!"));
+                .orElseThrow(() -> new BadRequestException("Bicicleta não existe!"));
     }
 
+    @Transactional
     public Bicicleta save(BicicletaPostRequestBody bicicletaPostRequestBody) throws Exception {
         return bicicletaRepository.save(BicicletaMapper.INSTANCE.toBicicleta(bicicletaPostRequestBody));
 

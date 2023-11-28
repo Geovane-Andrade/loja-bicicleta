@@ -1,6 +1,6 @@
-package com.maisprati.lojabicicleta.mapper;
+package com.maisprati.lojabicicleta.mappers;
 
-import com.maisprati.lojabicicleta.domain.models.Bicicleta;
+import com.maisprati.lojabicicleta.domain.model.Bicicleta;
 import com.maisprati.lojabicicleta.requests.BicicletaPatchRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPostRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPutRequestBody;
