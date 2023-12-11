@@ -1,11 +1,13 @@
 package com.maisprati.lojabicicleta.requests;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
+@Builder
 public class BicicletaPostRequestBody {
     private String modelo;
     private String descricao;

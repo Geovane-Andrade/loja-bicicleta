@@ -7,6 +7,8 @@ import com.maisprati.lojabicicleta.mappers.BicicletaMapper;
 import com.maisprati.lojabicicleta.requests.BicicletaPatchRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPostRequestBody;
 import com.maisprati.lojabicicleta.requests.BicicletaPutRequestBody;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,22 +26,29 @@ public class BicicletaService {
     }
 
 
+    public Page<Bicicleta> listAll(Pageable pageable) {
+        return bicicletaRepository.findAll(pageable);
+    }
+    public List<Bicicleta> listAllNonPageable() {
+        return bicicletaRepository.findAll();
+    }
+
     public Bicicleta findByIdOrThrowBadRequestException(UUID id) {
         return bicicletaRepository.findById(id)
                 .orElseThrow(() -> new BadRequestException("Bicicleta não existe!"));
     }
 
     @Transactional
-    public Bicicleta save(BicicletaPostRequestBody bicicletaPostRequestBody) throws Exception {
+    public Bicicleta save(BicicletaPostRequestBody bicicletaPostRequestBody) throws BadRequestException {
         return bicicletaRepository.save(BicicletaMapper.INSTANCE.toBicicleta(bicicletaPostRequestBody));
 
     }
 
-    public List<Bicicleta> listAll() {
-        return bicicletaRepository.findAll();
+    public void delete(UUID id) {
+        bicicletaRepository.delete(findByIdOrThrowBadRequestException(id));
     }
 
-    public void replace(BicicletaPutRequestBody bicicletaPutRequestBody) throws Exception {
+    public void replace(BicicletaPutRequestBody bicicletaPutRequestBody) throws BadRequestException {
         Bicicleta bicicletaSalva = findByIdOrThrowBadRequestException(bicicletaPutRequestBody.getId());
         Bicicleta bicicleta = BicicletaMapper.INSTANCE.toBicicleta(bicicletaPutRequestBody);
         bicicleta.setId(bicicletaSalva.getId());
@@ -47,11 +56,6 @@ public class BicicletaService {
         bicicletaRepository.save(bicicleta);
 
 
-    }
-
-
-    public void delete(UUID id) {
-        bicicletaRepository.delete(findByIdOrThrowBadRequestException(id));
     }
 
     public void update(UUID id, BicicletaPatchRequestBody bicicletaPatch) {
@@ -79,4 +83,5 @@ public class BicicletaService {
         bicicletaRepository.save(bicicletaSalva);
 
     }
+
 }

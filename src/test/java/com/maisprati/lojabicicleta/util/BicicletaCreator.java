@@ -39,4 +39,16 @@ public class BicicletaCreator {
                 .nomeLoja("NewBk")
                 .build();
     }
+
+    public static  Bicicleta criarBicicletaComUnicasMudancas() {
+        return Bicicleta.builder()
+                .id(UUID.fromString("493a8a5d-814d-2392-5-dabacd9963ae"))
+                .modelo("Caloi Velox MY23 ")
+                .descricao("Bicicleta azul do ano de 2023")
+                .nomeComprador("José dos Santos")
+                .dataCompra(LocalDate.from(LocalDateTime.now()))
+                .precoPago(500.00)
+                .nomeLoja("NewBk")
+                .build();
+    }
 }

@@ -1,12 +1,14 @@
 package com.maisprati.lojabicicleta.requests;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
+@Builder
 public class BicicletaPutRequestBody {
     private UUID id;
     private String modelo;
